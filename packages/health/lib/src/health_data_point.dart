@@ -6,7 +6,7 @@ enum HealthPlatformType { appleHealth, googleFit, googleHealthConnect }
 /// A [HealthDataPoint] object corresponds to a data point capture from
 /// Apple HealthKit or Google Fit or Google Health Connect with a [HealthValue]
 /// as value.
-@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false, explicitToJson: true)
 class HealthDataPoint {
   /// The quantity value of the data point
   HealthValue value;

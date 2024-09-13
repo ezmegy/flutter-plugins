@@ -27,7 +27,7 @@ HealthDataPoint _$HealthDataPointFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$HealthDataPointToJson(HealthDataPoint instance) {
   final val = <String, dynamic>{
-    'value': instance.value,
+    'value': instance.value.toJson(),
     'type': _$HealthDataTypeEnumMap[instance.type]!,
     'unit': _$HealthDataUnitEnumMap[instance.unit]!,
     'date_from': instance.dateFrom.toIso8601String(),
@@ -45,7 +45,7 @@ Map<String, dynamic> _$HealthDataPointToJson(HealthDataPoint instance) {
     }
   }
 
-  writeNotNull('workout_summary', instance.workoutSummary);
+  writeNotNull('workout_summary', instance.workoutSummary?.toJson());
   return val;
 }
 
@@ -239,13 +239,13 @@ WorkoutHealthValue _$WorkoutHealthValueFromJson(Map<String, dynamic> json) =>
     WorkoutHealthValue(
       workoutActivityType: $enumDecode(
           _$HealthWorkoutActivityTypeEnumMap, json['workout_activity_type']),
-      totalEnergyBurned: json['total_energy_burned'] as int?,
+      totalEnergyBurned: (json['total_energy_burned'] as num?)?.toInt(),
       totalEnergyBurnedUnit: $enumDecodeNullable(
           _$HealthDataUnitEnumMap, json['total_energy_burned_unit']),
-      totalDistance: json['total_distance'] as int?,
+      totalDistance: (json['total_distance'] as num?)?.toInt(),
       totalDistanceUnit: $enumDecodeNullable(
           _$HealthDataUnitEnumMap, json['total_distance_unit']),
-      totalSteps: json['total_steps'] as int?,
+      totalSteps: (json['total_steps'] as num?)?.toInt(),
       totalStepsUnit: $enumDecodeNullable(
           _$HealthDataUnitEnumMap, json['total_steps_unit']),
     )..$type = json['__type'] as String?;
